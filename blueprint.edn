@@ -1,0 +1,11 @@
+[{:itonami.blueprint/id "cloud-itonami-isco-2513"
+  :itonami.blueprint/name "Community Web Studio"
+  :itonami.blueprint/isco-08 "2513"
+  :itonami.blueprint/domain :ict/web-development
+  :itonami.blueprint/license "AGPL-3.0-or-later"
+  :itonami.blueprint/social-impact [:local-business-presence :digital-inclusion :open-web]
+  :itonami.blueprint/governor :web-multimedia-governor
+  :itonami.blueprint/robotics true
+  :itonami.blueprint/required-technologies [:robotics :identity :forms :dmn :bpmn :audit-ledger]
+  :itonami.blueprint/status :public-oss
+  :db/id -1}]
