@@ -1,18 +1,28 @@
 # cloud-itonami-isco-2513
 
-Open Business Blueprint for **ISCO-08 2513**: Web and Multimedia Developers — an ISCO
-**Wave 0 (cognitive substrate)** occupation per the reverse-toposort
-rollout plan (ADR-2607121000): pure-cognitive work, the LLM-first wave,
-with **no robotics gate** — eligible for actor implementation now.
+**Community Web Studio** — the ISCO-08 2513 (Web and Multimedia
+Developers) actor, an ISCO **Wave 0** occupation per ADR-2607121000:
+pure-cognitive work, the LLM-first wave, no robotics gate.
 
-**Maturity: `:blueprint`** — this repository publishes the business
-blueprint only; **no actor implementation yet**, and none is claimed.
-The implemented actor will follow the fleet-standard pattern
-(advisor-LLM sealed behind the independent `:web-multimedia-governor`
-governor, human approval workflow, append-only audit ledger — same
-shape as cloud-itonami-isco-2411's accounting practice).
+**Maturity: `:implemented`** — WebMultimediaAdvisor ⊣
+WebMultimediaGovernor as a langgraph StateGraph
+(`intake → advise → govern → decide → commit/hold`, human-approval
+interrupt), modeled on cloud-itonami-isco-4311's bookkeeping actor.
+12 tests / 26 assertions green.
+
+The web-studio-specific HARD invariants:
+
+1. **License provenance** — every cited asset must be REGISTERED with
+   a recorded license (the fleet's spec-basis rule, creative-work
+   edition). Material of unknown licensing is unusable at any
+   confidence; the remedy is clearing the license, not approving
+   harder. Foreign/unregistered assets are equally held.
+2. **Link integrity** — every internal link must target a page inside
+   the same draft (a set-membership fact; "it looks complete" is never
+   trusted).
+
+Escalations (always human sign-off): `:publish-site` (external
+publication), low confidence (< 0.6).
 
 AGPL-3.0-or-later, forkable by any qualified operator. Part of the
-[cloud-itonami](https://itonami.cloud) open business fleet
-(labor-transition context: ADR-2607122100 — ISCO wave-0 agentization
-is marketed through the 7810 labour-exchange lane).
+[cloud-itonami](https://itonami.cloud) open business fleet.
