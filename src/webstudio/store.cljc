@@ -13,7 +13,13 @@
              the fleet's spec-basis rule).
     record — a committed operating record (site draft, published site,
              content update) — written ONLY via commit-record!.
-    ledger — append-only audit trail, commit or hold."
+    ledger — append-only audit trail, commit or hold. Entries are built
+             by `webstudio.ledger/entry`, which refuses malformed ones;
+             `append-ledger!` itself is a dumb sink and does not check.
+             A row names what authorised it and, on commit, the licence
+             basis in force when the governor read the register — the
+             asset register is mutable, so a row that did not carry it
+             stopped being readable the moment a licence changed."
   )
 
 (defprotocol Store
