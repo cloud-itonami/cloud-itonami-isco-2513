@@ -24,7 +24,7 @@
   ESCALATION invariants (:escalate? true, human sign-off):
     6. :op :publish-site (external publication).
     7. low confidence (< `confidence-floor`)."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [webstudio.store :as store]))
 
 (def confidence-floor 0.6)

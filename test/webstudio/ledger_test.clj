@@ -2,7 +2,7 @@
   "The refusals are the reason the basis is carried, so each one is asked
   for by name, and each acceptance that looks like a refusal-in-waiting is
   pinned as a control."
-  (:require [clojure.string]
+  (:require [kotoba.lang.text]
             [clojure.test :refer [deftest is testing]]
             [webstudio.actor :as actor]
             [webstudio.advisor :as advisor]
@@ -52,7 +52,7 @@
   next clause caught it as a malformed :licences map -- so a test asserting
   only THAT it refused stayed green while the rule it named was gone."
   [reason m]
-  (some-> (fault-of m) (clojure.string/includes? reason)))
+  (some-> (fault-of m) (kotoba.lang.text/includes? reason)))
 
 ;; ------------------------------------------------- the entry is well formed
 
