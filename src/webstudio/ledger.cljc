@@ -76,7 +76,7 @@
   `entry` is total and pure: it either returns a well-formed entry or
   throws, and it never reaches a store. Building an entry is not
   appending one."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (def authorisations #{:governor-clear :human-sign-off :governor-hold})
 
