@@ -1,0 +1,33 @@
+;; What this vertical's robot physically does, declared for
+;; kotoba.robotics.process (kotoba-lang/robotics). `kbb -M:physics` runs it.
+;;
+;; ISCO 2513, web and multimedia developers. The README calls this pure-cognitive work with no robotics
+;; gate; blueprint.edn nevertheless declares :itonami.blueprint/robotics true.
+;; The physical work declared here is the handling the occupation itself
+;; entails (ASSUMPTION, not stated in the README): placing phones and tablets onto the device-lab test rig for cross-device checks, and carrying the camera/lighting kit to the studio for product shoots.
+;; Replace with the README premise once one is written.
+;;
+;; Every number without a cited source is marked `estimate` in its :basis.
+;; Replacing an estimate with a sourced value is this bot's growth work.
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isco-2513"
+ :cases
+ [{:id :device-onto-test-rig
+   :kind :manipulator
+   :procedure "small arm moves a phone or tablet from the device rack onto the cross-device test rig, as fast as the test schedule allows"
+   :params {:l1-m 0.30 :l2-m 0.25 :m1-kg 1.5 :m2-kg 1.0 :payload-kg 0.5
+            :from [0.40 0.05] :to [0.10 0.40] :steps 500}
+   :sweep {:param :duration-s :values [0.3 0.5 0.8 1.2 2.0]}
+   :quantity :peak-tau1-nm
+   :limit {:max 12.0 :basis "estimate: continuous shoulder torque of a desktop arm (~1 kg payload class)"}
+   :boundary {:lo 0.1 :hi 3.0}}
+  {:id :studio-kit-cart
+   :kind :transport
+   :procedure "AMR carries the camera, lights and backdrop kit from storage to the product-shoot studio"
+   :params {:mass-kg 35.0 :payload-kg 30.0 :v-max-mps 1.0 :a-max-mps2 0.5
+            :brake-decel-mps2 0.8 :drive-force-n 70.0 :crr 0.02
+            :support-half-length-m 0.25 :distance-m 40.0}
+   :sweep {:param :cog-height-m :values [0.4 0.6 0.8 1.0 1.2]}
+   :quantity :min-tipover-margin
+   :limit {:min 0.65 :basis "estimate: light stands and backdrop poles ride upright; keep 65 % tip-over reserve because a knocked-over stand damages lamps"}
+   :boundary {:lo 0.2 :hi 2.0}}]}
